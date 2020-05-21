@@ -49,11 +49,8 @@ public class Translator {
         return true;
     }
 
-    public static void main(String[] args) {
-        words = new HashMap<String, String>(); // hashmap that contains the word and their value in roman
-        minerals = new HashMap<String, Double>(); // hashmap that contains the mineral and their singular value
-        File file = new File("entradas.txt");
-        try {
+    private static void exec(File file){
+        try{
             Scanner input = new Scanner(file);
             while (input.hasNextLine()) {// starting reading all the lines of the file
 
@@ -148,8 +145,20 @@ public class Translator {
                 }
 
             }
+        }catch(Exception e) {
+            System.out.println("Erro na leitura do arquivo");
+        }
+        
+    }
+
+    public static void main(String[] args) {
+        words = new HashMap<String, String>(); // hashmap that contains the word and their value in roman
+        minerals = new HashMap<String, Double>(); // hashmap that contains the mineral and their singular value
+        File file = new File("entradas.txt");
+        try {
+            exec(file);
         } catch (Exception e) {
-            System.out.println("Erro na leitura do arquivo = " + e);
+            System.out.println("Erro na execucao" + e);
         }
 
         // System.out.println(words); //testing the words
